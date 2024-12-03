@@ -11,3 +11,4 @@ export default createRouter((router: Router)=>{
     router.get('/getUser',userDetails)
 })
 
+//Check
