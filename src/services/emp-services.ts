@@ -1,4 +1,4 @@
-import { eq } from 'drizzle-orm';
+import { eq,and } from 'drizzle-orm';
 import { employees } from '@/schema/employees';
 import { employeeImages } from '@/schema/employees';
 import { db } from '@/utils/db'; 
@@ -13,7 +13,15 @@ export async function getEmployeeById(id: number) {
     .from(employees)
     .where(eq(employees.id, id))
     .limit(1); 
-  return employee; 
+    if(!employee)  throw new BackendError('INTERNAL_ERROR', {
+      message: 'Failed to get employee Please Check the Id again.',
+    });
+    const images = await db
+    .select()
+    .from(employeeImages)
+    .where(eq(employeeImages.empId, id));
+    return { ...employee, images };
+
 }
 
 
