@@ -54,3 +54,13 @@ export const handleUploadImages = createHandler(async(req,res) => {
   });
 
 });
+
+export const userDetails = createHandler(async(req,res)=>{
+  console.log("In controllers ")
+  const employee = req.body;
+  console.log(employee);
+  const existingEmployee = await getEmployeeById(employee.id);
+  console.log(existingEmployee);
+  res.status(201)
+  .json({employee:existingEmployee});
+});

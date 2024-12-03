@@ -7,7 +7,7 @@ import { uploadOnCloudinary } from '@/utils/cloudinary';
 
 
 export async function getEmployeeById(id: number) {
-  // console.log("Called getEmployeeById in services");
+  console.log("Called getEmployeeById in services");
   const [employee] = await db
     .select()
     .from(employees)
@@ -15,6 +15,7 @@ export async function getEmployeeById(id: number) {
     .limit(1); 
   return employee; 
 }
+
 
 export async function addEmployeeService(employee: any) {
   // console.log("Called addEmployeeService in services");
