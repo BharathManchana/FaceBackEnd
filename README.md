@@ -1,4 +1,4 @@
-# techAaditi-backend
+# Face-backend
 
 ### Running the app
 
